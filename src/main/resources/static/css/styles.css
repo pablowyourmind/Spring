@@ -1,0 +1,13 @@
+.validationError {
+	color: red;
+	font-weight: bold;
+}
+
+.logout-link {
+    float: right;
+}
+
+body {
+  background-color: white;
+  color: black;
+}

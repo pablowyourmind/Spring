@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Order list</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-bordered table-sm">
+            <thead class="thead-dark">
+                <th scope="col">ID</th>
+                <th scope="col">Desined tacos</th>
+                <th scope="col">Placed at</th>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.id}"></td>
+                    <td th:text="${order.getTacosNames()}"></td>
+                    <td th:text="${order.placedAt}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <a href="/">Back to main page</a>
+</body>
+</html>

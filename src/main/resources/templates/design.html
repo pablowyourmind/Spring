@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Taco Cloud</title>
+		<link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<h1>Design your taco!</h1>
+		<br/>
+		<a href="/">Back to main page</a>
+		<img th:src="@{/images/TacoCloud.png}"/>
+		
+		<form method="POST" th:object="${taco}">
+			<div class="grid">
+			
+			<div th:if="${#fields.hasErrors()}">
+				<span class="validationError">
+					Please correct the problems below and resubmit.
+				</span>
+			</div>
+			</br>
+				<span class="validationError" th:if="${#fields.hasErrors('ingredients')}" 
+							th:errors="*{ingredients}">tacoName error
+				</span>
+				<div th:each="ingredientType : ${ingredients}">
+					<div class="ingredient-group" id="${ingredientType.key}">
+						<h3 th:if="${ingredientType.key} == 'wrap'">Designate your wrap:</h3>
+						<h3 th:if="${ingredientType.key} == 'protein'">Pick your protein:</h3>
+						<h3 th:if="${ingredientType.key} == 'cheese'">Choose your cheese:</h3>
+						<h3 th:if="${ingredientType.key} == 'veggies'">Determine your veggies:</h3>
+						<h3 th:if="${ingredientType.key} == 'sauce'">Select your sauce:</h3>
+						<div th:each="ingredient : ${ingredientType.value}">
+							<input name="ingredients" type="checkbox" th:value="${ingredient.id}">
+							<span th:text="${ingredient.name}"></span>
+							</br>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div>
+				<h3>Name your taco creation:</h3>
+				<input type="text" th:field="*{tacoName}"/>
+				<span class="validationError" 
+					th:if="${#fields.hasErrors('tacoName')}"
+					th:errors="*{tacoName}">tacoName error
+				</span>
+				<br/>
+				<button>Submit your taco</button>
+			</div>
+		</form>
+	</body>
+</html>

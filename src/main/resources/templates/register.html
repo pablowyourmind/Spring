@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"/>
+<head>
+    <meta charset="UTF-8">
+    <title>User registration form</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h1>Register user</h1>
+    <img th:src="@{images/TacoCloud.png}"/>
+
+    <form method="post" th:object="${registrationFormUser}">
+        <div class="validationError" th:if="${#fields.hasGlobalErrors()}" th:errors="${registrationFormUser}">error</div>
+        <label for="username">Username: </label> </br>
+        <input type="text" id="username" class="text-input" placeholder="username" th:field="*{username}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error</span>
+        </br>
+
+        <label for="password">Password: </label> </br>
+        <input type="password" id="password" class="password-field" placeholder="password" th:field="*{password}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error</span>
+        </br>
+
+        <label for="confirm">Confirm password: </label> </br>
+        <input type="password" id="confirm" class="password-fieldt" placeholder="password" th:field="*{confirm}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('confirm')}" th:errors="*{confirm}">error</span>
+        </br>
+
+        <label for="fullName">Full name: </label> </br>
+        <input type="text" id="fullName" class="text-input" placeholder="full name" th:field="*{fullName}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">error</span>
+        </br>
+
+        <label for="street">Street: </label> </br>
+        <input type="text" id="street" class="text-input" placeholder="street" th:field="*{street}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">error</span>
+        </br>
+
+        <label for="city">City: </label> </br>
+        <input type="text" id="city" class="text-input" placeholder="city" th:field="*{city}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">error</span>
+        </br>
+
+        <label for="zipCode">Zip code: </label> </br>
+        <input type="text" id="zipCode" class="text-input" placeholder="zip code" th:field="*{zipCode}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">error</span>
+        </br>
+
+        <label for="phoneNumber">Phone number: </label> </br>
+        <input type="text" id="phoneNumber" class="text-input" placeholder="phone number" th:field="*{phoneNumber}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">error</span>
+        </br>
+
+
+
+        <input type="submit" value="Register">
+    </form>
+    </br>
+    <a href="/login">Back</a>
+</body>
+</html>
